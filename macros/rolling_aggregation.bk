@@ -1,0 +1,13 @@
+version: 2
+
+macros:
+  - name: rolling_aggregation
+    description: "Calculates a rolling aggregation of a specified column over a set number of periods."
+    arguments:
+      column_name: "The name of the column to aggregate."
+      partition_by: "The column by which to partition the data."
+      aggregation: "The type of aggregation function to use (e.g., avg, sum, count). Defaults to 'avg'."
+      periods: "The number of periods over which to calculate the rolling aggregation. Defaults to 7."
+      order_by: "The column by which to order the data within each partition. Defaults to 'created_at'."
+    example: >
+      {{ rolling_aggregation('sales', 'region', 'sum', 30, 'date') }}
